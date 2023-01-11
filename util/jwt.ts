@@ -12,7 +12,7 @@ class Token {
         return token
     }
 
-    public verify(token: string){
+    public verify(token: string): any{
         const payload = jwt.verify(token, this.secret)
         return payload 
     }

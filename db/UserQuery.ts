@@ -1,5 +1,5 @@
 import knex from "./knex";
-import { User } from "../model/User";
+import { UserDto } from "../dto/user.dto";
 
 class Query {
     private knex: any
@@ -8,11 +8,15 @@ class Query {
         this.knex = knex
     }
 
-    public async createUser(addUser: User): Promise<any>  {
+    public async createUser(addUser: UserDto): Promise<any>  {
         return await this.knex('users').insert(addUser)
     }
     public async getUserByEmail(email: string): Promise<any>{
         return await this.knex('users').where('email', email)
+    }
+
+    public async getUserById(id: string): Promise<any>{
+        return await this.knex('users').where('id', id)
     }
 
     public async updateUser(id: number, user: any):

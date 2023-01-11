@@ -51,3 +51,6 @@ class ResponseHelper {
         this.error(res, message, 400);
     }
 }
+
+const systemResponse = new ResponseHelper()
+export default systemResponse
