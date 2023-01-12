@@ -12,7 +12,7 @@ export async function registerUser (req: Request, res: Response, next: NextFunct
     }
     const userExist = await UserQuery.getUserByEmail(email)
     console.log(userExist)
-    if(userExist){
+    if(userExist.length > 0){
         return systemResponse.badRequest(res, 'User already Exist')
     }
     const hashDash = new Password(10)

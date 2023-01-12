@@ -4,7 +4,7 @@
   "description": "blog API with nodejs typescript, knex and objectionjs",
   "main": "index.ts",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/index.ts",
+    "dev": "nodemon --exec ts-node index.ts",
     "build": "npm && tsc",
     "start": "node dist/index.js",
     "test-dev": "cross-env NODE_ENV=test nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\"  --timeout 10000",
