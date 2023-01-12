@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import compression from 'compression';
 import { errorHandler, notFound } from './errors/errorHandler';
 import authRouter from './routes/auth';
+import postRouter from './routes/post'
 
 dotenv.config()
 
@@ -34,7 +35,7 @@ class Server {
             res.status(200).json({ message: 'Welcome to Type Blog API' });
         });
         this.app.use('/api/v1', authRouter);
-        // this.app.use('/api/v1', userRouter);
+        this.app.use('/api/v1', postRouter);
 
 
 

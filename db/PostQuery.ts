@@ -14,7 +14,7 @@ class Query {
     }
 
     // get all post
-    public async getAllPost(email: string): Promise<any>{
+    public async getAllPost(): Promise<any>{
         return await this.knex('posts')
     }
 
@@ -24,9 +24,9 @@ class Query {
     }
 
     // update post
-    public async updatePost(id: number, user: any):
+    public async updatePost(id: number, post: any):
     Promise<any> {
-        return await this.knex('users').where('id', id).update(user);
+        return await this.knex('users').where('id', id).update(post);
     }
 
      // delete user
