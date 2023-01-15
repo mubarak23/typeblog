@@ -23,6 +23,11 @@ class Query {
         return await this.knex('posts').where('id', id)
     }
 
+     // get post by category
+     public async getPostByCategory(category: string): Promise<any>{
+        return await this.knex('posts').where('category', category)
+    }
+
     // update post
     public async updatePost(id: number, post: any):
     Promise<any> {

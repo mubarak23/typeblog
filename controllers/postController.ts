@@ -46,6 +46,21 @@ export async function getPost (req: Request, res: Response, next: NextFunction):
     }
 }
 
+// getPostByCategory
+export async function getPostByCategory (req: Request, res: Response, next: NextFunction): Promise<void>{
+    const category = req.params.category
+    try {
+        const posts = await PostQuery.getPostByCategory(category)
+        if(!posts && !posts.length){
+            // return fail status
+            return systemResponse.badRequest(res, 'Post Does Not Exist')
+        }
+        return systemResponse.success(res, posts, 200)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 export async function updatePost (req: Request, res: Response, next: NextFunction): Promise<void>{
     const postId = req.params.id

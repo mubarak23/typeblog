@@ -2,6 +2,7 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import multer from 'multer';
 import compression from 'compression';
 import { errorHandler, notFound } from './errors/errorHandler';
 import authRouter from './routes/auth';
@@ -27,6 +28,24 @@ class Server {
         // express body parser
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
+
+        // upload file
+        const storage = multer.diskStorage({
+            destination: function (req, file, cb) {
+              cb(null, './public/upload');
+            },
+            filename: function (req, file, cb) {
+              cb(null, Date.now() + file.originalname);
+            },
+          });
+          
+          const upload = multer({ storage });
+          
+          this.app.post('/api/upload', upload.single('file'), (req, res) => {
+            const file = req.file as unknown as Express.Multer.File[];
+            res.status(200).json(file[0].fieldname);
+          });
+
 
 
         // routes

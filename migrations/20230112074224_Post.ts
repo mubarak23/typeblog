@@ -7,6 +7,7 @@ export async function up(knex: Knex): Promise<void> {
         t.string('title').notNullable();
         t.string('content').notNullable();
         t.string('image').nullable();
+        t.string('category').nullable();
         t
         .integer("user_id")
         .unsigned()
