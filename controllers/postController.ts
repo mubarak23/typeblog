@@ -4,13 +4,14 @@ import { PostDto } from '../dto/post.dto'
 import systemResponse from '../util/response'
 
 export async function createPost (req: Request, res: Response, next: NextFunction): Promise<void>{
-    const { title, content, image } = req.body
+    const { title, content, image, category } = req.body
     const user_id = (req as any).token.id;
 
-    const post = {
+    const post: PostDto = {
         user_id,
         title,
         content,
+        category,
         image
     }
     try {

@@ -19,8 +19,7 @@ export async function registerUser (req: Request, res: Response, next: NextFunct
     const hashedPassword = await hashDash.hashPassword(password)
     const user: UserDto = {
         email,
-        password : hashedPassword,
-        image
+        password : hashedPassword,        
     }
     try {
         await UserQuery.createUser(user)

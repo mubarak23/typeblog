@@ -29,3 +29,5 @@ class VerifyAuth  {
         }
     }
 }
+
+export default new VerifyAuth()

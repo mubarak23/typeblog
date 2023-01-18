@@ -1,7 +1,7 @@
 export interface PostDto {
     title: string,
     content: string,
-    category: string,
+    category?: string,
     image: string,
     user_id: number
 }

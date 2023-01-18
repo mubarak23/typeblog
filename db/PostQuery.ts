@@ -20,7 +20,7 @@ class Query {
 
     // get post by Id
     public async getPostById(id: number): Promise<any>{
-        return await this.knex('posts').where('id', id)
+        return await this.knex('posts').where('id', id).first()
     }
 
      // get post by category

@@ -43,7 +43,7 @@ class Server {
           
           this.app.post('/api/upload', upload.single('file'), (req, res) => {
             const file = req.file as unknown as Express.Multer.File[];
-            res.status(200).json(file[0].fieldname);
+            res.status(200).json(file);
           });
 
 
